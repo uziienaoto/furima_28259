@@ -49,15 +49,20 @@ Things you may want to cover:
 | Column          | Type       | Options     |
 | ------          | ------     | ----------- |
 | name            | string     | null: false |
+| category        | integer    | null: false |
+| condition       | integer    | null: false |
+| delivery_fee    | integer    | null: false |
+| ship_from       | integer    | null: false |
+| days_until_ship | integer    | null: false |
 | content         | text       | null: false |
-| price           | string     | null: false |
-| user            | references | null: false |
-| image           | string     | null: false |
+| price           | integer    | null: false |
+| user            | references | null: false, foreign_key: true|
+
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 - has_one    :purchases
-- has_one    :buys
+- has_one    :buy
 
 ## buys テーブル
 
@@ -67,20 +72,20 @@ Things you may want to cover:
 | user    | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 ## purchases テーブル
 
-| Column           | Type        | Options     |
-| ------           | ------      | ----------- |
-| postal_code      | integer     | null: false |
-| prefecture       | string      | null: false |
-| city             | string      | null: false |
-| address          | string      | null: false |
-| building_name    | string      | null: false |
-| phone_number     | string     | null: false |
-| item             | references  | null: false |
+| Column           | Type        | Options                       |
+| ------           | ------      | -----------                   |
+| postal_code      | integer     | null: false                   |
+| prefecture       | integer     | null: false                   |
+| city             | string      | null: false                   |
+| address          | string      | null: false                   |
+| building_name    | string      |                               |
+| phone_number     | string      | null: false                   |
+| item             | references  | null: false, foreign_key: true|
 
 ### Association
-- belongs_to :items
+- belongs_to :item
