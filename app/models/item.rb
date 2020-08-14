@@ -7,11 +7,20 @@ class Item < ApplicationRecord
   belongs_to_active_hash :daysuntilship
 
   has_one_attached :image
-
+  belongs_to :user
+  has_one    :purchase
+  has_one    :buy
   #空の投稿を出品できないようにする
-  validates :category_id, :condition_id, :delivery_fee_id, :ship_from_id, :days_until_ship_id, presence: true
-
-  #ジャンルの選択が「--」の時は出品できないようにする
-  validates :category_id, numericality: { other_than: 1 } 
+  with_options presence: true do
+    validates :price
+    validates :name
+    validates :content
+    validates :image
+    validates :category_id, numericality: { other_than: 1, message: 'Select'}
+    validates :condition_id, numericality: { other_than: 1, message: 'Select'}
+    validates :delivery_fee_id, numericality: { other_than: 1, message: 'Select'}
+    validates :ship_from_id, numericality: { other_than: 1, message: 'Select'} 
+    validates :days_until_ship_id, numericality: { other_than: 1, message: 'Select'}
+  end
 end
 
