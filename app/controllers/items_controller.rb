@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items =Items records
   end
 
   def new
