@@ -2,9 +2,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
-  belongs_to_active_hash :deliveryfee
-  belongs_to_active_hash :shipfrom
-  belongs_to_active_hash :daysuntilship
+  belongs_to_active_hash :delivery_fee
+  belongs_to_active_hash :ship_from
+  belongs_to_active_hash :days_until_ship
 
   has_one_attached :image
   belongs_to :user
