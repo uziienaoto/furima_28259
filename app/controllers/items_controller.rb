@@ -5,8 +5,7 @@ class ItemsController < ApplicationController
     @items = Item.all.order ('created_at DESC')
   end
   
-  def show
-  end
+
 
   def destroy
       if @item.destroy
@@ -15,9 +14,6 @@ class ItemsController < ApplicationController
         render :index
       end
 
-  end
-
-  def edit
   end
 
   def new
