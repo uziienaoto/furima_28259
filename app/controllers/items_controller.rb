@@ -1,19 +1,16 @@
 class ItemsController < ApplicationController
   before_action :get_item, only: [:edit, :show, :destroy]
-  
+
   def index
     @items = Item.all.order 'created_at DESC'
   end
-  
-
 
   def destroy
-      if @item.destroy
-         redirect_to root_path
-      else
-        render :index
-      end
-
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   def new
@@ -31,9 +28,9 @@ class ItemsController < ApplicationController
   end
 
   private
-  def get_item 
-    @item = Item.find(params[:id])
 
+  def get_item
+    @item = Item.find(params[:id])
   end
 
   def item_params
