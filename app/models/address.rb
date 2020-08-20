@@ -1,5 +1,4 @@
-class Address < ApplicationRecord
-  with_options presence: true do
-    validates :price
+class Address< ApplicationRecord
     belongs_to :item
-end
+  end
+
