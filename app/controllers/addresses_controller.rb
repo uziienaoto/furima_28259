@@ -41,7 +41,6 @@ class AddressesController < ApplicationController
   end
 
   def pay_item
-    set PAYJP_SECRET_KEY = 'sk_test_4e1240773fc584f9d2db1180'
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: set_item[:price], # 商品の値段 とってきたItemからpriceをぬきとる
