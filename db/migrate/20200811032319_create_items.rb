@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.text           :content            , null: false
       t.integer        :price              , hull: false
       t.references     :user               , null: false
+      t.timestamps
     end
   end
 end
