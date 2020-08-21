@@ -9,6 +9,6 @@ FactoryBot.define do
     content             { '美味しいお茶です' }
     price               { 5000 }
     association         :user
-    image {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/endo.png'))}
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/endo.png')) }
   end
 end

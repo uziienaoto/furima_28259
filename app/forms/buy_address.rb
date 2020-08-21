@@ -1,12 +1,12 @@
 class BuyAddress
   include ActiveModel::Model
   attr_accessor :postal_code, :ship_from_id, :city, :address, :building_name, :phone_number, :item_id, :user_id
-
+  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
   with_options presence: true do
-    validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/ }
+    validates :postal_code, format: { with: POSTAL_CODE_REGEX }
     validates :ship_from_id, numericality: { other_than: 1, message: 'Select' }
     validates :city
-    validates :phone_number,   length: { maximum: 11}, format: { with:/\d{11}/}
+    validates :phone_number, length: { maximum: 11 }, format: { with: /\d{11}/ }
     validates :item_id
     validates :user_id
     validates :address
