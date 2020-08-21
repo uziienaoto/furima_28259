@@ -8,7 +8,7 @@ FactoryBot.define do
     days_until_ship_id  { 2 }
     content             { '美味しいお茶です' }
     price               { 5000 }
-    user                {1}
-
+    association         :user
+    image {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/endo.png'))}
   end
 end

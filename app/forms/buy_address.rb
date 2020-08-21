@@ -9,6 +9,7 @@ class BuyAddress
     validates :phone_number,   length: { maximum: 11}, format: { with:/\d{11}/}
     validates :item_id
     validates :user_id
+    validates :address
   end
 
   def save
