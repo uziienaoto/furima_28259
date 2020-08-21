@@ -12,12 +12,10 @@ class AddressesController < ApplicationController
     redirect_to root_path if current_user.id == @item.user_id
   end
 
-
   def new
-    
   end
 
-  def create# 購入予定のItemを探す。
+  def create # 購入予定のItemを探す。
     @address = BuyAddress.new(address_params)
     if @address.valid?
       pay_item
@@ -26,19 +24,17 @@ class AddressesController < ApplicationController
     else
       render :index
     end
-
   end
 
   private
-  
+
   def set_item
-  @item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
   end
 
   def address_params
     params.permit(:postal_code, :ship_from_id, :city, :address, :building_name, :phone_number, :item_id).merge(user_id: current_user.id)
   end
-
 
   def item_params
     params.permit(:price, :token)
@@ -47,8 +43,8 @@ class AddressesController < ApplicationController
   def pay_item
     Payjp.api_key = 'sk_test_4e1240773fc584f9d2db1180' # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount:set_item[:price],  # 商品の値段 とってきたItemからpriceをぬきとる
-      card: params[:token],    # カードトークン
+      amount: set_item[:price], # 商品の値段 とってきたItemからpriceをぬきとる
+      card: params[:token], # カードトークン
       currency: 'jpy' # 通貨の種類
     )
   end

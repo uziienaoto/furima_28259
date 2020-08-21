@@ -1,4 +1,3 @@
-class Address< ApplicationRecord
-    belongs_to :item
+class Address < ApplicationRecord
+  belongs_to :item
   end
-
