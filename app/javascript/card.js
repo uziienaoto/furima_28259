@@ -1,6 +1,7 @@
 const pay = () => {
+  heroku config:set PAYJP_PUBLIC_KEY=`pk_test_bfe4080f367a49dccccbe11d`
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
-  Payjp.setPublicKey("pk_test_bfe4080f367a49dccccbe11d");// PAY.JPテスト公開鍵
+  // Payjp.setPublicKey("pk_test_bfe4080f367a49dccccbe11d");// PAY.JPテスト公開鍵
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -26,12 +27,10 @@ const pay = () => {
         document.getElementById("card-exp-year").removeAttribute("name");
         document.getElementById("charge-form").submit();
         document.getElementById("charge-form").reset(); 
-        {
-        
- 
-      }
+
     });
   });
 };
+
 
 window.addEventListener("load", pay);
